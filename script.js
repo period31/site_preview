@@ -1242,7 +1242,7 @@ if (cartPageElement) {
 
   const getScheduleWindow = (locationKey, mode) => {
     const schedule = locationSchedules[locationKey] ?? locationSchedules.belgorod;
-    const deliveryShift = mode === "delivery" ? 2 : 0;
+    const deliveryShift = mode === "delivery" ? 1 : 0;
     const firstHour = Math.min(schedule.openHour + deliveryShift, schedule.closeHour - 1);
 
     return {
