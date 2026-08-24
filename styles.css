@@ -2233,7 +2233,28 @@ body[data-page="contacts"] .site-footer,
   }
 
   .header-actions {
-    display: none;
+    display: flex;
+    grid-column: 2;
+    justify-self: end;
+    gap: 8px;
+  }
+
+  .header-actions .icon-link {
+    width: 46px;
+    height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  .header-actions .icon-link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .header-actions .icon-link__badge {
+    top: -2px;
+    right: -2px;
   }
 
   .menu-toggle {
