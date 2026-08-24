@@ -1215,6 +1215,21 @@ if (cartPageElement) {
     stroitel: "Строитель",
   };
 
+  const locationSchedules = {
+    belgorod: {
+      openHour: 8,
+      closeHour: 22,
+    },
+    severny: {
+      openHour: 8,
+      closeHour: 21,
+    },
+    stroitel: {
+      openHour: 7,
+      closeHour: 21,
+    },
+  };
+
   const getLocalDateIso = () => {
     const now = new Date();
     const year = now.getFullYear();
@@ -1223,11 +1238,36 @@ if (cartPageElement) {
     return `${year}-${month}-${day}`;
   };
 
-  const buildTimeOptions = () => {
-    const options = [];
+  const formatHourOption = (hour) => `${String(hour).padStart(2, "0")}:00`;
 
-    for (let hour = 8; hour <= 22; hour += 1) {
-      options.push(`${String(hour).padStart(2, "0")}:00`);
+  const getScheduleWindow = (locationKey, mode) => {
+    const schedule = locationSchedules[locationKey] ?? locationSchedules.belgorod;
+    const deliveryShift = mode === "delivery" ? 2 : 0;
+    const firstHour = Math.min(schedule.openHour + deliveryShift, schedule.closeHour - 1);
+
+    return {
+      startHour: firstHour,
+      closeHour: schedule.closeHour,
+    };
+  };
+
+  const buildTimeOptions = (locationKey, mode, type, fromValue = "") => {
+    const options = [];
+    const { startHour, closeHour } = getScheduleWindow(locationKey, mode);
+
+    if (type === "to") {
+      const fromHour = Number.parseInt(String(fromValue).slice(0, 2), 10);
+      const endStartHour = Number.isFinite(fromHour) ? fromHour + 1 : startHour + 1;
+
+      for (let hour = endStartHour; hour <= closeHour; hour += 1) {
+        options.push(formatHourOption(hour));
+      }
+
+      return options;
+    }
+
+    for (let hour = startHour; hour < closeHour; hour += 1) {
+      options.push(formatHourOption(hour));
     }
 
     return options;
@@ -1433,6 +1473,7 @@ if (cartPageElement) {
 
     locationSelect.disabled = rules.mode !== "free";
     orderDraft.location = locationSelect.value;
+    syncTimeOptions();
 
     if (locationHintElement) {
       locationHintElement.textContent = rules.hint;
@@ -1467,14 +1508,37 @@ if (cartPageElement) {
     writeMenuCart(nextCart);
   };
 
-  const hydrateTimeSelect = (select, selectedValue) => {
-    const options = buildTimeOptions();
+  const hydrateTimeSelect = (select, options, selectedValue) => {
     select.innerHTML = options
       .map(
         (value) =>
           `<option value="${value}" ${value === selectedValue ? "selected" : ""}>${value.slice(0, 2)}</option>`,
       )
       .join("");
+  };
+
+  const syncTimeOptions = () => {
+    const fromOptions = buildTimeOptions(orderDraft.location, orderDraft.mode, "from");
+    const nextFromValue = fromOptions.includes(orderDraft.timeFrom)
+      ? orderDraft.timeFrom
+      : fromOptions[0] || "";
+
+    hydrateTimeSelect(timeFromSelect, fromOptions, nextFromValue);
+
+    const toOptions = buildTimeOptions(
+      orderDraft.location,
+      orderDraft.mode,
+      "to",
+      nextFromValue,
+    );
+    const nextToValue = toOptions.includes(orderDraft.timeTo)
+      ? orderDraft.timeTo
+      : toOptions[0] || "";
+
+    hydrateTimeSelect(timeToSelect, toOptions, nextToValue);
+
+    orderDraft.timeFrom = nextFromValue;
+    orderDraft.timeTo = nextToValue;
   };
 
   const syncModeVisibility = () => {
@@ -1510,6 +1574,8 @@ if (cartPageElement) {
         String(button.dataset.orderMode === orderDraft.mode),
       );
     });
+
+    syncTimeOptions();
   };
 
   const syncDraftFromForm = () => {
@@ -1549,8 +1615,6 @@ if (cartPageElement) {
     document.getElementById("checkout-customer-phone").value = orderDraft.customerPhone;
     locationSelect.value = orderDraft.location;
     dateInput.value = orderDraft.date;
-    hydrateTimeSelect(timeFromSelect, orderDraft.timeFrom);
-    hydrateTimeSelect(timeToSelect, orderDraft.timeTo);
     pickupSelfCheckbox.checked = Boolean(orderDraft.pickupSelf);
     document.getElementById("checkout-pickup-recipient-name").value =
       orderDraft.pickupRecipientName;
@@ -1924,6 +1988,18 @@ if (cartPageElement) {
       writeOrderDraft(orderDraft);
       syncModeVisibility();
     });
+  });
+
+  locationSelect.addEventListener("change", () => {
+    orderDraft.location = locationSelect.value;
+    syncTimeOptions();
+    writeOrderDraft(orderDraft);
+  });
+
+  timeFromSelect.addEventListener("change", () => {
+    orderDraft.timeFrom = timeFromSelect.value;
+    syncTimeOptions();
+    writeOrderDraft(orderDraft);
   });
 
   checkoutForm.addEventListener("input", () => {
