@@ -2312,6 +2312,28 @@ body[data-page="contacts"] .site-footer,
     letter-spacing: 2.8px;
   }
 
+  .home-page .home-products {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(276px, 84vw);
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 2px 4px 10px 0;
+    scroll-snap-type: x proximity;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .home-page .home-products::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-page .home-products .product-card {
+    scroll-snap-align: start;
+  }
+
   .home-products,
   .spaces-grid,
   .reviews-row,
