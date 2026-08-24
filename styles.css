@@ -2211,9 +2211,9 @@ body[data-page="contacts"] .site-footer,
   }
 
   .site-header {
-    grid-template-columns: 1fr auto auto;
-    gap: 10px;
-    min-height: 74px;
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: 92px;
     padding: 0 12px;
   }
 
@@ -2221,6 +2221,7 @@ body[data-page="contacts"] .site-footer,
     grid-column: 1;
     justify-self: start;
     align-items: flex-start;
+    padding-right: 116px;
   }
 
   .brand__title {
@@ -2234,8 +2235,10 @@ body[data-page="contacts"] .site-footer,
 
   .header-actions {
     display: flex;
-    grid-column: 2;
-    justify-self: end;
+    position: absolute;
+    top: 50%;
+    right: 66px;
+    transform: translateY(-50%);
     gap: 8px;
   }
 
@@ -2258,10 +2261,15 @@ body[data-page="contacts"] .site-footer,
   }
 
   .menu-toggle {
-    grid-column: 3;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
   }
 
   .site-nav {
+    left: 12px;
+    right: 12px;
     top: calc(100% + 8px);
     padding: 18px;
   }
