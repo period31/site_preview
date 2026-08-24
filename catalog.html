@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог букетов — PERIOD</title>
+  <meta name="description" content="Каталог реальных букетов PERIOD с нежной пастельной палитрой и удобным выбором по настроению.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="catalog">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="PERIOD">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="main-nav">
+        <a href="index.html#about">О нас</a>
+        <a href="menu.html">Меню</a>
+        <a href="catalog.html">Букеты</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-link icon-link--cart" href="cart.html" aria-label="Корзина">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 8h10l-1 10H8L7 8Z"></path>
+            <path d="M9.2 8a2.8 2.8 0 0 1 5.6 0"></path>
+          </svg>
+          <span class="icon-link__badge" data-cart-count hidden>0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="catalog-page">
+      <section class="catalog-hero section">
+        <img class="catalog-hero__image" src="assets/bouquets/catalog/slivochnyy-ton.jpg" alt="Каталог букетов PERIOD">
+        <div class="catalog-hero__shade" aria-hidden="true"></div>
+        <div class="catalog-hero__content">
+          <div class="catalog-hero__crumbs">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <span>Букеты</span>
+          </div>
+          <h1>Каталог букетов</h1>
+          <p>Авторские букеты для любых моментов. Собраны с заботой и любовью к деталям.</p>
+        </div>
+      </section>
+
+      <section class="catalog-toolbar section">
+        <div class="catalog-filter-bar">
+          <label class="catalog-filter">
+            <span class="catalog-filter__label">Настроение</span>
+            <select class="catalog-filter__select" id="catalog-filter-mood">
+              <option value="all">Все</option>
+              <option value="airy">Воздушные</option>
+              <option value="tender">Нежные</option>
+              <option value="bright">Яркие</option>
+              <option value="classic">Классические</option>
+            </select>
+          </label>
+          <label class="catalog-filter">
+            <span class="catalog-filter__label">Цветовая гамма</span>
+            <select class="catalog-filter__select" id="catalog-filter-palette">
+              <option value="all">Все</option>
+              <option value="white">Светлая</option>
+              <option value="pink">Розовая</option>
+              <option value="pastel">Пастельная</option>
+              <option value="accent">Акцентная</option>
+            </select>
+          </label>
+          <label class="catalog-filter">
+            <span class="catalog-filter__label">Повод</span>
+            <select class="catalog-filter__select" id="catalog-filter-occasion">
+              <option value="all">Все</option>
+              <option value="everyday">На каждый день</option>
+              <option value="gift">В подарок</option>
+              <option value="romantic">Романтика</option>
+              <option value="event">Событие</option>
+            </select>
+          </label>
+          <button class="catalog-reset" id="catalog-reset" type="button">Сбросить фильтры</button>
+        </div>
+
+        <div class="catalog-meta">
+          <p id="catalog-count">Найдено 0 букетов</p>
+          <div class="catalog-controls">
+            <label class="catalog-sort">
+              <span>Сортировать:</span>
+              <select id="catalog-sort-select">
+                <option value="popular">Популярные</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="name-asc">По названию</option>
+              </select>
+            </label>
+            <div class="catalog-view">
+              <button class="is-active" type="button" data-catalog-view="grid" aria-label="Сетка">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="4" y="4" width="6" height="6" rx="1.2"></rect>
+                  <rect x="14" y="4" width="6" height="6" rx="1.2"></rect>
+                  <rect x="4" y="14" width="6" height="6" rx="1.2"></rect>
+                  <rect x="14" y="14" width="6" height="6" rx="1.2"></rect>
+                </svg>
+              </button>
+              <button type="button" data-catalog-view="list" aria-label="Список">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 7h12"></path>
+                  <path d="M6 12h12"></path>
+                  <path d="M6 17h12"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="catalog-grid catalog-grid--reference" id="catalog-grid"></div>
+        <nav class="catalog-pagination" id="catalog-pagination" aria-label="Пагинация каталога"></nav>
+      </section>
+
+      <section class="section catalog-cta">
+        <div class="catalog-cta__image">
+          <img src="assets/bouquets/slivochnyy-shepot.jpg" alt="Соберём букет под ваш момент">
+        </div>
+        <div class="catalog-cta__copy">
+          <h2>Соберём букет<br>под ваш момент</h2>
+          <p>Хотите что-то особенное? Мы с радостью создадим букет по вашим пожеланиям и настроению.</p>
+          <a class="button button--solid" href="contacts.html">Заказать индивидуальный букет</a>
+          <div class="catalog-cta__botanic" aria-hidden="true"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__brand">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+        <p>Спасибо, что выбираете нас каждый день.</p>
+      </div>
+
+      <div>
+        <h3>Меню</h3>
+        <a href="menu.html">Завтраки</a>
+        <a href="menu.html">Основное меню</a>
+        <a href="menu.html">Десерты</a>
+        <a href="menu.html">Напитки</a>
+      </div>
+
+      <div>
+        <h3>Букеты</h3>
+        <a href="catalog.html">Все букеты</a>
+        <a href="catalog.html">Свадьба и события</a>
+      </div>
+
+      <div>
+        <h3>Поддержка</h3>
+        <a href="contacts.html">Доставка и оплата</a>
+      </div>
+
+      <div class="footer-contacts">
+        <h3>Контакты</h3>
+        <div class="footer-socials">
+          <a class="footer-social" href="https://t.me/kofeino_buketny_period" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 4 3.8 10.6c-.8.3-.8 1.4 0 1.7l4.4 1.5 1.7 5.1c.2.7 1.1.8 1.5.2l2.5-3.4 4.3 3.2c.6.4 1.4.1 1.5-.7L22 5.1A1 1 0 0 0 21 4Z"></path>
+              <path d="m8.5 13.7 9-6.2"></path>
+            </svg>
+          </a>
+          <a class="footer-social" href="https://www.instagram.com/kofeino.buketny.period" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.5"></rect>
+              <circle cx="12" cy="12" r="3.6"></circle>
+              <circle cx="17.2" cy="6.9" r="1"></circle>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-contact-list">
+          <a href="tel:+79155213344"><strong>Губкина</strong><span>+7 (915) 521-33-44</span></a>
+          <a href="tel:+79155243344"><strong>Северный</strong><span>+7 (915) 524-33-44</span></a>
+          <a href="tel:+79192260399"><strong>Строитель</strong><span>+7 (919) 226-03-99</span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js?v=20260820-1"></script>
+</body>
+</html>

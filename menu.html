@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню — PERIOD</title>
+  <meta name="description" content="Меню PERIOD с выбором локации: Белгород, Северный или Строитель. Завтраки, основное меню, десерты и напитки в фирменном стиле проекта.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="menu">
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="PERIOD">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="main-nav">
+        <a href="index.html#about">О нас</a>
+        <a href="menu.html">Меню</a>
+        <a href="catalog.html">Букеты</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="icon-link icon-link--cart" href="cart.html" aria-label="Корзина">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 8h10l-1 10H8L7 8Z"></path>
+            <path d="M9.2 8a2.8 2.8 0 0 1 5.6 0"></path>
+          </svg>
+          <span class="icon-link__badge" data-cart-count hidden>0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="menu-page">
+      <section class="menu-hero section">
+        <img class="menu-hero__image" src="assets/food/hero-breakfast.jpg" alt="Завтраки и кофе PERIOD">
+        <div class="menu-hero__shade" aria-hidden="true"></div>
+        <div class="menu-hero__content">
+          <div class="menu-hero__crumbs">
+            <a href="index.html">Главная</a>
+            <span>›</span>
+            <span>Меню</span>
+          </div>
+          <h1>Меню, которое выбирают под настроение и место</h1>
+          <p>Сначала выберите локацию, а затем откройте меню именно этого пространства: Белгород, Северный или Строитель.</p>
+        </div>
+      </section>
+
+      <section class="section menu-location-section">
+        <div class="menu-location-switch" role="tablist" aria-label="Выбор локации">
+          <button class="is-active" type="button" data-menu-location="belgorod">Белгород</button>
+          <button type="button" data-menu-location="severny">Северный</button>
+          <button type="button" data-menu-location="stroitel">Строитель</button>
+        </div>
+
+        <div class="menu-location-card">
+          <div class="menu-location-card__copy">
+            <p class="eyebrow" id="menu-location-eyebrow">Локация</p>
+            <h2 id="menu-location-title"><span class="wordmark wordmark--inline">PERIOD</span><span class="wordmark-separator">·</span>Белгород</h2>
+            <p class="menu-location-card__lead" id="menu-location-lead">Основное пространство с полным меню завтраков, фирменным кофе и десертами на каждый день.</p>
+
+            <div class="menu-location-meta">
+              <div class="menu-location-meta__item">
+                <span>Адрес</span>
+                <strong id="menu-location-address">ул. Советская, 34</strong>
+              </div>
+              <div class="menu-location-meta__item">
+                <span>Часы работы</span>
+                <strong id="menu-location-hours">8:00 — 22:00</strong>
+              </div>
+              <div class="menu-location-meta__item">
+                <span>Формат</span>
+                <strong id="menu-location-format">Завтраки · Десерты · Цветы</strong>
+              </div>
+            </div>
+
+            <div class="menu-location-badges" id="menu-location-badges"></div>
+          </div>
+
+          <figure class="menu-location-card__media">
+            <img id="menu-location-image" src="assets/food/avocado-toast.jpg" alt="Меню локации PERIOD">
+          </figure>
+        </div>
+      </section>
+
+      <section class="section menu-board">
+        <div class="section-head">
+          <h2>Меню локации</h2>
+          <span class="section-link" id="menu-category-caption">Все категории</span>
+        </div>
+
+        <div class="menu-category-switch" role="tablist" aria-label="Категории меню">
+          <button class="is-active" type="button" data-menu-category="all">Все</button>
+          <button type="button" data-menu-category="breakfast">Завтраки</button>
+          <button type="button" data-menu-category="mains">Основное</button>
+          <button type="button" data-menu-category="desserts">Десерты</button>
+          <button type="button" data-menu-category="drinks">Напитки</button>
+        </div>
+
+        <div class="menu-sections" id="menu-sections"></div>
+      </section>
+
+      <section class="section menu-cta-banner">
+        <div>
+          <h2>Хочется уточнить меню перед визитом?</h2>
+          <p>Можно быстро перейти в контакты, выбрать удобную точку и уточнить наличие позиций или сделать предзаказ.</p>
+        </div>
+        <div class="cta-banner__actions">
+          <a class="button button--light" href="contacts.html">Связаться с локацией</a>
+          <a class="button button--ghost-light" href="catalog.html">Посмотреть букеты</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__brand">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+        <p>Спасибо, что выбираете нас каждый день.</p>
+      </div>
+
+      <div>
+        <h3>Меню</h3>
+        <a href="menu.html">Завтраки</a>
+        <a href="menu.html">Основное меню</a>
+        <a href="menu.html">Десерты</a>
+        <a href="menu.html">Напитки</a>
+      </div>
+
+      <div>
+        <h3>Букеты</h3>
+        <a href="catalog.html">Все букеты</a>
+        <a href="catalog.html">Свадьба и события</a>
+      </div>
+
+      <div>
+        <h3>Поддержка</h3>
+        <a href="contacts.html">Доставка и оплата</a>
+      </div>
+
+      <div class="footer-contacts">
+        <h3>Контакты</h3>
+        <div class="footer-socials">
+          <a class="footer-social" href="https://t.me/kofeino_buketny_period" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 4 3.8 10.6c-.8.3-.8 1.4 0 1.7l4.4 1.5 1.7 5.1c.2.7 1.1.8 1.5.2l2.5-3.4 4.3 3.2c.6.4 1.4.1 1.5-.7L22 5.1A1 1 0 0 0 21 4Z"></path>
+              <path d="m8.5 13.7 9-6.2"></path>
+            </svg>
+          </a>
+          <a class="footer-social" href="https://www.instagram.com/kofeino.buketny.period" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.5"></rect>
+              <circle cx="12" cy="12" r="3.6"></circle>
+              <circle cx="17.2" cy="6.9" r="1"></circle>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-contact-list">
+          <a href="tel:+79155213344"><strong>Губкина</strong><span>+7 (915) 521-33-44</span></a>
+          <a href="tel:+79155243344"><strong>Северный</strong><span>+7 (915) 524-33-44</span></a>
+          <a href="tel:+79192260399"><strong>Строитель</strong><span>+7 (919) 226-03-99</span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="script.js?v=20260820-1"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Корзина и оформление — PERIOD</title>
+  <meta name="description" content="Корзина PERIOD: оформление букета, десертов и напитков с выбором доставки или самовывоза.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="main-nav">
+        <a href="index.html#about">О нас</a>
+        <a href="menu.html">Меню</a>
+        <a href="catalog.html">Букеты</a>
+        <a href="contacts.html">Контакты</a>
+      </nav>
+
+      <a class="brand" href="index.html" aria-label="На главную">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+      </a>
+
+      <div class="header-actions">
+        <a class="icon-link icon-link--cart" href="cart.html" aria-label="Корзина">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 8h10l-1 10H8L7 8Z"></path>
+            <path d="M9.2 8a2.8 2.8 0 0 1 5.6 0"></path>
+          </svg>
+          <span class="icon-link__badge" data-cart-count hidden>0</span>
+        </a>
+      </div>
+    </header>
+
+    <main class="cart-page" data-cart-page>
+      <section class="section cart-hero">
+        <div class="cart-hero__copy">
+          <p class="eyebrow">Корзина PERIOD</p>
+          <h1>Оформление заказа</h1>
+          <p>
+            Выберите удобный формат получения, укажите контактные данные и проверьте
+            состав заказа перед подтверждением.
+          </p>
+        </div>
+        <div class="cart-hero__actions">
+          <a class="button button--ghost" href="catalog.html">Добавить букет</a>
+          <a class="button button--solid" href="menu.html">Добавить меню</a>
+        </div>
+      </section>
+
+      <section class="section cart-layout">
+        <form class="checkout-card" id="checkout-form" novalidate>
+          <div class="checkout-card__head">
+            <div>
+              <p class="eyebrow">Ваши данные</p>
+              <h2>Оформление заказа</h2>
+            </div>
+            <p>Выберите доставку или самовывоз, укажите дату и контакты для подтверждения заказа.</p>
+          </div>
+
+          <div class="checkout-fields checkout-fields--customer">
+            <label class="checkout-field">
+              <span>Введите свое ФИО *</span>
+              <input id="checkout-customer-name" name="customerName" type="text" required placeholder="Например, Анна Петрова">
+            </label>
+
+            <label class="checkout-field">
+              <span>Введите ваш ник в Telegram *</span>
+              <input id="checkout-customer-telegram" name="customerTelegram" type="text" required placeholder="@period_guest">
+            </label>
+
+            <label class="checkout-field">
+              <span>Введите ваш номер телефона *</span>
+              <input id="checkout-customer-phone" name="customerPhone" type="tel" required placeholder="+7 (900) 000-00-00">
+            </label>
+          </div>
+
+          <div class="checkout-divider"></div>
+
+          <div id="checkout-cart-items" class="checkout-items"></div>
+
+          <div id="checkout-postcard-panel" class="checkout-postcard" hidden>
+            <button
+              type="button"
+              class="checkout-postcard__toggle"
+              id="checkout-postcard-toggle"
+              aria-expanded="false"
+            >
+              <span>Добавить открытку к букету</span>
+            </button>
+
+            <div id="checkout-postcard-fields" class="checkout-postcard__fields" hidden>
+              <label class="checkout-field checkout-field--full">
+                <span>Текст для открытки</span>
+                <textarea
+                  id="checkout-postcard-message"
+                  name="postcardMessage"
+                  rows="4"
+                  placeholder="Напишите текст, который нужно вложить в открытку"
+                ></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-mode">
+            <button type="button" class="checkout-mode__button is-active" data-order-mode="delivery" aria-pressed="true">Доставка</button>
+            <button type="button" class="checkout-mode__button" data-order-mode="pickup" aria-pressed="false">Самовывоз</button>
+          </div>
+
+          <div class="checkout-fields checkout-fields--schedule">
+            <label class="checkout-field checkout-field--select">
+              <span>Пространство *</span>
+              <select id="checkout-location" name="location" required>
+                <option value="belgorod">Губкина</option>
+                <option value="severny">Северный</option>
+                <option value="stroitel">Строитель</option>
+              </select>
+              <small class="checkout-field__hint" id="checkout-location-hint"></small>
+            </label>
+
+            <label class="checkout-field">
+              <span>Дата *</span>
+              <input id="checkout-date" name="date" type="date" required>
+            </label>
+
+            <div class="checkout-time">
+              <span>Выберите временной интервал *</span>
+              <div class="checkout-time__controls">
+                <label>
+                  <span>С</span>
+                  <select id="checkout-time-from" name="timeFrom"></select>
+                </label>
+                <label>
+                  <span>По</span>
+                  <select id="checkout-time-to" name="timeTo"></select>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div id="checkout-pickup-section" class="checkout-conditional" hidden>
+            <label class="checkout-check checkout-check--inline">
+              <input id="checkout-pickup-self" name="pickupSelf" type="checkbox">
+              <span>Я лично заберу заказ</span>
+            </label>
+
+            <div id="checkout-pickup-recipient-fields" class="checkout-fields">
+              <label class="checkout-field">
+                <span>ФИО того, кто заберёт заказ *</span>
+                <input id="checkout-pickup-recipient-name" name="pickupRecipientName" type="text" placeholder="Кто заберёт заказ">
+              </label>
+
+              <label class="checkout-field">
+                <span>Номер телефона того, кто заберёт заказ *</span>
+                <input id="checkout-pickup-recipient-phone" name="pickupRecipientPhone" type="tel" placeholder="+7 (900) 000-00-00">
+              </label>
+            </div>
+          </div>
+
+          <div id="checkout-delivery-section" class="checkout-conditional">
+            <div class="checkout-fields">
+              <label class="checkout-field">
+                <span>Введите ФИО получателя *</span>
+                <input id="checkout-delivery-recipient-name" name="deliveryRecipientName" type="text" required placeholder="Получатель">
+              </label>
+
+              <label class="checkout-field">
+                <span>Введите номер телефона получателя *</span>
+                <input id="checkout-delivery-recipient-phone" name="deliveryRecipientPhone" type="tel" required placeholder="+7 (900) 000-00-00">
+              </label>
+
+              <label class="checkout-field checkout-field--full">
+                <span>Адрес доставки *</span>
+                <textarea id="checkout-delivery-address" name="deliveryAddress" rows="3" required placeholder="Город, улица, дом, подъезд, этаж"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-consents">
+            <label class="checkout-check">
+              <input id="checkout-consent-privacy" name="consentPrivacy" type="checkbox" required>
+              <span>Даю согласие на обработку моих персональных данных.</span>
+            </label>
+
+            <label class="checkout-check">
+              <input id="checkout-consent-offer" name="consentOffer" type="checkbox" required>
+              <span>Принимаю условия публичной оферты.</span>
+            </label>
+          </div>
+
+          <button class="checkout-submit" id="checkout-submit" type="submit">Отправить заказ</button>
+          <p class="checkout-feedback" id="checkout-feedback" aria-live="polite"></p>
+        </form>
+
+        <aside class="checkout-summary">
+          <div class="checkout-summary__card">
+            <p class="eyebrow">Итог</p>
+            <h2>В заказе <span id="checkout-summary-count">0</span> позиций</h2>
+            <strong id="checkout-summary-total">0 ₽</strong>
+            <p id="checkout-summary-note">Добавьте букет или позицию из меню, чтобы оформить заказ.</p>
+          </div>
+
+          <div class="checkout-summary__card">
+            <p class="eyebrow">Состав корзины</p>
+            <ul id="checkout-summary-list" class="checkout-summary__list">
+              <li class="is-empty"><span>Корзина пока пуста</span><strong>0</strong></li>
+            </ul>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__brand">
+        <span class="brand__title wordmark wordmark--brand">PERIOD</span>
+        <span class="brand__subtitle">кофе и цветы</span>
+        <p>Спасибо, что выбираете нас каждый день.</p>
+      </div>
+
+      <div>
+        <h3>Меню</h3>
+        <a href="menu.html">Завтраки</a>
+        <a href="menu.html">Основное меню</a>
+        <a href="menu.html">Десерты</a>
+        <a href="menu.html">Напитки</a>
+      </div>
+
+      <div>
+        <h3>Букеты</h3>
+        <a href="catalog.html">Все букеты</a>
+        <a href="catalog.html">Свадьба и события</a>
+      </div>
+
+      <div>
+        <h3>Поддержка</h3>
+        <a href="contacts.html">Доставка и оплата</a>
+      </div>
+
+      <div class="footer-contacts">
+        <h3>Контакты</h3>
+        <div class="footer-socials">
+          <a class="footer-social" href="https://t.me/kofeino_buketny_period" target="_blank" rel="noreferrer" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 4 3.8 10.6c-.8.3-.8 1.4 0 1.7l4.4 1.5 1.7 5.1c.2.7 1.1.8 1.5.2l2.5-3.4 4.3 3.2c.6.4 1.4.1 1.5-.7L22 5.1A1 1 0 0 0 21 4Z"></path>
+              <path d="m8.5 13.7 9-6.2"></path>
+            </svg>
+          </a>
+          <a class="footer-social" href="https://www.instagram.com/kofeino.buketny.period" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.5"></rect>
+              <circle cx="12" cy="12" r="3.6"></circle>
+              <circle cx="17.2" cy="6.9" r="1"></circle>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-contact-list">
+          <a href="tel:+79155213344"><strong>Губкина</strong><span>+7 (915) 521-33-44</span></a>
+          <a href="tel:+79155243344"><strong>Северный</strong><span>+7 (915) 524-33-44</span></a>
+          <a href="tel:+79192260399"><strong>Строитель</strong><span>+7 (919) 226-03-99</span></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="order-gateway-config.js?v=20260820-2"></script>
+  <script src="script.js?v=20260820-3"></script>
+</body>
+</html>
