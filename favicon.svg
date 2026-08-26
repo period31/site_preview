@@ -1,18 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="16" fill="#fbf6ef"/>
-  <path
-    d="M24.8 23.5C28.3 25.4 34 22.6 39.3 23.4C44.1 24.2 46.1 27.7 46.1 31.7C46.1 37.3 41.8 41.1 35.8 43.3C32.8 44.4 30.3 45.8 28.1 48.8"
-    fill="none"
-    stroke="#4b3d2f"
-    stroke-width="3"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M28.1 31V53.4"
-    fill="none"
-    stroke="#4b3d2f"
-    stroke-width="3"
-    stroke-linecap="square"
-  />
+  <g transform="translate(1 -2.4)">
+    <path
+      d="M24.8 23.5C28.3 25.4 34 22.6 39.3 23.4C44.1 24.2 46.1 27.7 46.1 31.7C46.1 37.3 41.8 41.1 35.8 43.3C32.8 44.4 30.3 45.8 28.1 48.8"
+      fill="none"
+      stroke="#4b3d2f"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M28.1 31V53.4"
+      fill="none"
+      stroke="#4b3d2f"
+      stroke-width="3"
+      stroke-linecap="square"
+    />
+  </g>
 </svg>
