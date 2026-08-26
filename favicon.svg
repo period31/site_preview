@@ -1,5 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#fbf6ef"/>
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#d9c8b2" stroke-width="2"/>
-  <path d="M21 15h14.5c7.8 0 12.5 4.3 12.5 10.8 0 7.1-5.2 11.3-13.9 11.3H27V49h-6V15Zm6 17.2h7.1c4.9 0 7.7-2.2 7.7-6.1 0-3.8-2.8-6-7.7-6H27v12.1Z" fill="#4b3d2f"/>
+  <rect width="64" height="64" rx="16" fill="#050505"/>
+  <rect x="18" y="7" width="28" height="50" rx="14" fill="none" stroke="#ffffff" stroke-width="2.2"/>
+  <path
+    d="M26 25.6C29.4 27.2 34.1 24.4 39 25.1C43.4 25.8 45 28.9 45 32.1C45 37.2 40.8 40.3 35 42.5C33 43.3 31.2 44.4 29.9 45.5"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3.1"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M29.6 31.3V45.6"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="3.1"
+    stroke-linecap="square"
+  />
 </svg>
