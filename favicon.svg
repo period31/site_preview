@@ -1,19 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#050505"/>
-  <rect x="18" y="7" width="28" height="50" rx="14" fill="none" stroke="#ffffff" stroke-width="2.2"/>
-  <path
-    d="M26 25.6C29.4 27.2 34.1 24.4 39 25.1C43.4 25.8 45 28.9 45 32.1C45 37.2 40.8 40.3 35 42.5C33 43.3 31.2 44.4 29.9 45.5"
-    fill="none"
-    stroke="#ffffff"
-    stroke-width="3.1"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M29.6 31.3V45.6"
-    fill="none"
-    stroke="#ffffff"
-    stroke-width="3.1"
-    stroke-linecap="square"
-  />
+  <rect width="64" height="64" rx="16" fill="#fbf6ef"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#e4d6c6" stroke-width="1.5"/>
+  <text
+    x="32"
+    y="44"
+    text-anchor="middle"
+    fill="#4b3d2f"
+    font-family="Bodoni MT, Didot, Times New Roman, serif"
+    font-size="38"
+    font-weight="400"
+    letter-spacing="0"
+  >P</text>
 </svg>
